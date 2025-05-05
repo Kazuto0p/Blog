@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1A2533 0%, #0F172A 100%);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(192, 160, 98, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.blog-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #C0A062;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.wrapper {
+    max-width: 450px;
+    width: 90vw;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(192, 160, 98, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    z-index: 1;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: #FFFFFF;
+}
+
+.login-form h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.error-message {
+    color: #FF6666;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 20px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px ;
+    border: none;
+    border-bottom: 2px solid #C0A062;
+    background: transparent;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    transition: border-bottom-width 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #AAAAAA;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-bottom-width: 3px;
+    border-bottom-color: #FFD700;
+}
+
+.forgot-password {
+    width: 100%;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #C0A062;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    position: relative;
+}
+
+.forgot-password a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C0A062;
+    transition: width 0.3s;
+}
+
+.forgot-password a:hover::after {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #C0A062, #FFD700);
+    color: #1A2533;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+button:focus {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
+}
+
+.signup-link {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.signup-link a {
+    color: #C0A062;
+    text-decoration: none;
+    position: relative;
+}
+
+.signup-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C0A062;
+    transition: width 0.3s;
+}
+
+.signup-link a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .blog-title {
+        font-size: 2rem;
+    }
+
+    .wrapper {
+        padding: 30px;
+    }
+
+    .login-form h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+
+    .forgot-password a::after, .signup-link a::after {
+        transition: none;
+    }
+}
