@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import './Navbar.css'
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+
+    const navigate = useNavigate()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+
+    useEffect(()=>{
+
+        const token = localStorage.getItem("token")
+
+        if(!token){
+
+            navigate("/login")
+
+        }
+
+    })
 
     return (
         <nav className="navbar">
@@ -59,16 +75,16 @@ const Navbar = () => {
                     </li>
                     <li className="navbar-item">
                         <NavLink 
-                            to="/contact" 
+                            to="/profile" 
                             className={({ isActive }) => 
                                 `navbar-link ${isActive ? 'active' : ''}`
                             }
                             onClick={() => setIsMenuOpen(false)}
                         >
-                            Contact
+                            Profile
                         </NavLink>
                     </li>
-                    <li className="navbar-item">
+                    {/* <li className="navbar-item">
                         <NavLink 
                             to="/login" 
                             className={({ isActive }) => 
@@ -78,8 +94,8 @@ const Navbar = () => {
                         >
                             Login
                         </NavLink>
-                    </li>
-                    <li className="navbar-item">
+                    </li> */}
+                    {/* <li className="navbar-item">
                         <NavLink 
                             to="/signup" 
                             className={({ isActive }) => 
@@ -89,7 +105,8 @@ const Navbar = () => {
                         >
                             Sign Up
                         </NavLink>
-                    </li>
+                    </li> */}
+                
                 </ul>
             </div>
         </nav>

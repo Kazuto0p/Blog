@@ -1,15 +1,35 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import './Login.css'
+import axios from "axios";
 
 const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [error, setError] = useState('');
-    
-    const login = () =>{
+    const navigate = useNavigate()
+    const login = async (e) => {
         e.preventDefault();
-    }
+    
+        try {
+            console.log('Email:', email);
+            console.log('Password:', password);
+    
+            const response = await axios.post('http://localhost:3010/api/logIn', {
+                email,
+                password
+            });
+    
+            console.log(response, 'axios response');
+    
+            localStorage.setItem("token", response.data.token);
+            navigate('/');
+        } catch (err) {
+            console.error("Login error:", err.response ? err.response.data : err.message);
+            alert("Login failed: " + (err.response?.data?.message || "Unknown error"));
+        }
+    };
+    
 
     return (
         <div className="container">
